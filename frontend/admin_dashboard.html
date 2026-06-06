@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Admin Dashboard</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f7fc;
+}
+
+.navbar{
+    width:100%;
+    background:#007BFF;
+    padding:15px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:white;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    font-size:18px;
+}
+
+.hero{
+    text-align:center;
+    padding:50px 20px;
+}
+
+.hero h1{
+    font-size:42px;
+    color:#333;
+}
+
+.hero p{
+    margin-top:10px;
+    color:gray;
+    font-size:18px;
+}
+
+.cards{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+    padding:40px;
+}
+
+.card{
+    background:white;
+    width:320px;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0px 5px 15px rgba(0,0,0,0.1);
+    transition:0.3s;
+    text-align:center;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card h2{
+    margin-bottom:15px;
+    color:#007BFF;
+}
+
+.card p{
+    color:gray;
+    margin-bottom:20px;
+    line-height:1.6;
+}
+
+.card button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:#007BFF;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.card button:hover{
+    background:#0056b3;
+}
+
+.footer{
+    text-align:center;
+    padding:20px;
+    background:#007BFF;
+    color:white;
+    margin-top:40px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="navbar">
+
+<div class="logo">
+
+ATS Admin Panel
+
+</div>
+
+<div class="nav-links">
+
+<a href="index.html">
+
+Home
+
+</a>
+
+<a href="admin_login.html">
+
+Logout
+
+</a>
+
+</div>
+
+</div>
+
+<div class="hero">
+
+<h1>
+
+Welcome Admin
+
+</h1>
+
+<p>
+
+Manage jobs, students and placement activities.
+
+</p>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+
+<h2>
+
+<i class="fa-solid fa-briefcase"></i>
+
+Post Jobs
+
+</h2>
+
+<p>
+
+Add new placement opportunities for students.
+
+</p>
+
+<a href="post_job.html">
+
+<button>
+
+Post Job
+
+</button>
+
+</a>
+
+</div>
+
+<div class="card">
+
+<h2>
+
+<i class="fa-solid fa-users"></i>
+
+View Applicants
+
+</h2>
+
+<p>
+
+Check all students who applied for jobs.
+
+</p>
+
+<a href="view_applicants.html">
+
+<button>
+
+View Applicants
+
+</button>
+
+</a>
+
+</div>
+
+<div class="card">
+
+<h2>
+
+<i class="fa-solid fa-user-graduate"></i>
+
+View Students
+
+</h2>
+
+<p>
+
+See all registered students in the portal.
+
+</p>
+
+<a href="view_students.html">
+
+<button>
+
+View Students
+
+</button>
+
+</a>
+
+</div>
+
+</div>
+
+<div class="footer">
+
+<p>
+
+© 2026 ATS Placement Portal |
+Developed by Vanshika
+
+</p>
+
+</div>
+
+</body>
+
+</html>

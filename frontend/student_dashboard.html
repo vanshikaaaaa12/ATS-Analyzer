@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Dashboard</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f7fc;
+}
+
+.navbar{
+    width:100%;
+    background:#007BFF;
+    padding:15px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:white;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    font-size:18px;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:#dbeafe;
+}
+
+.hero{
+    text-align:center;
+    padding:50px 20px;
+}
+
+.hero h1{
+    font-size:40px;
+    color:#333;
+}
+
+.hero p{
+    margin-top:10px;
+    color:gray;
+    font-size:18px;
+}
+
+.cards{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+    padding:40px;
+}
+
+.card{
+    background:white;
+    width:300px;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0px 5px 15px rgba(0,0,0,0.1);
+    text-align:center;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card h2{
+    margin-bottom:15px;
+    color:#007BFF;
+}
+
+.card p{
+    color:gray;
+    margin-bottom:20px;
+    line-height:1.6;
+}
+
+.card button{
+    padding:10px 20px;
+    border:none;
+    border-radius:8px;
+    background:#007BFF;
+    color:white;
+    cursor:pointer;
+    font-size:16px;
+    transition:0.3s;
+}
+
+.card button:hover{
+    background:#0056b3;
+    transform:scale(1.05);
+}
+
+.footer{
+    text-align:center;
+    padding:20px;
+    background:#007BFF;
+    color:white;
+    margin-top:40px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="navbar">
+
+<div class="logo">ATS Portal</div>
+
+<div class="nav-links">
+
+<a href="student_dashboard.html">Home</a>
+
+<a href="jobs.html">Jobs</a>
+
+<a href="profile.html">Profile</a>
+
+<a href="student_login.html">Logout</a>
+
+</div>
+
+</div>
+
+<div class="hero">
+
+<h1>Welcome to ATS Placement Portal</h1>
+
+<p>
+Apply for jobs and track your placement activities easily.
+</p>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+
+<h2>
+<i class="fa-solid fa-briefcase"></i>
+Available Jobs
+</h2>
+
+<p>
+Explore latest placement opportunities.
+</p>
+
+<a href="jobs.html">
+
+<button>View Jobs</button>
+
+</a>
+
+</div>
+
+<div class="card">
+
+<h2>
+<i class="fa-solid fa-file"></i>
+My Applications
+</h2>
+
+<p>
+Track all the jobs you have applied for.
+</p>
+
+<a href="applications.html">
+
+<button>Check Status</button>
+
+</a>
+
+</div>
+
+<div class="card">
+
+<h2>
+<i class="fa-solid fa-user"></i>
+Student Profile
+</h2>
+
+<p>
+Update your academic and personal details.
+</p>
+
+<a href="profile.html">
+
+<button>Edit Profile</button>
+
+</a>
+
+</div>
+
+<div class="card">
+
+<h2>
+<i class="fa-solid fa-file-circle-check"></i>
+Resume ATS Scanner
+</h2>
+
+<p>
+Upload resume and check ATS score with AI analysis.
+</p>
+
+<a href="resume_upload.html">
+
+<button>Scan Resume</button>
+
+</a>
+
+</div>
+
+</div>
+
+<div class="footer">
+
+<p>
+© 2026 ATS Placement Portal
+</p>
+
+</div>
+
+</body>
+
+</html>

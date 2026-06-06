@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+
+<style>
+
+body{
+background:#0f172a;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+font-family:Arial;
+}
+
+.box{
+background:white;
+padding:40px;
+border-radius:10px;
+width:300px;
+text-align:center;
+}
+
+input{
+width:100%;
+padding:10px;
+margin:10px 0;
+}
+
+button{
+width:100%;
+padding:10px;
+background:#007BFF;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>Student Login</h2>
+
+<input type="email" id="email" placeholder="Email">
+
+<input type="password" id="password" placeholder="Password">
+
+<button onclick="login()">
+Login
+</button>
+
+<p id="msg"></p>
+
+</div>
+
+<script>
+
+function login(){
+
+let email =
+document.getElementById("email").value;
+
+let password =
+document.getElementById("password").value;
+
+fetch("https://ats-portal-backend.onrender.com/students/all")
+
+.then(res => res.json())
+
+.then(data => {
+
+let found = false;
+
+data.forEach(student => {
+
+if(
+student.email === email
+&&
+student.password === password
+){
+
+found = true;
+
+}
+
+});
+
+if(found){
+
+alert("LOGIN SUCCESSFUL");
+
+window.location.href =
+"student_dashboard.html";
+
+}
+
+else{
+
+document.getElementById("msg").innerText =
+"Invalid Login";
+
+}
+
+});
+
+}
+
+</script>
+
+</body>
+</html>

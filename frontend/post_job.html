@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Post Job</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f7fc;
+}
+
+.navbar{
+    width:100%;
+    background:#007BFF;
+    padding:15px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:white;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    font-size:18px;
+}
+
+.container{
+    width:450px;
+    margin:60px auto;
+    background:white;
+    padding:35px;
+    border-radius:15px;
+    box-shadow:0px 5px 15px rgba(0,0,0,0.1);
+}
+
+.container h2{
+    text-align:center;
+    color:#007BFF;
+    margin-bottom:25px;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    margin:12px 0;
+    border:1px solid #ccc;
+    border-radius:10px;
+    font-size:16px;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    margin-top:15px;
+    border:none;
+    border-radius:10px;
+    background:#28a745;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#1e7e34;
+}
+
+#msg{
+    text-align:center;
+    margin-top:15px;
+    color:#007BFF;
+    font-weight:bold;
+}
+
+.footer{
+    text-align:center;
+    padding:20px;
+    background:#007BFF;
+    color:white;
+    margin-top:40px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="navbar">
+
+<div class="logo">
+
+ATS Admin Panel
+
+</div>
+
+<div class="nav-links">
+
+<a href="admin_dashboard.html">
+
+Dashboard
+
+</a>
+
+<a href="admin_login.html">
+
+Logout
+
+</a>
+
+</div>
+
+</div>
+
+<div class="container">
+
+<h2>
+
+<i class="fa-solid fa-briefcase"></i>
+
+Post New Job
+
+</h2>
+
+<form id="jobForm">
+
+<input type="text"
+id="company"
+placeholder="Company Name"
+required>
+
+<input type="text"
+id="role"
+placeholder="Job Role"
+required>
+
+<input type="text"
+id="package"
+placeholder="Package"
+required>
+
+<input type="text"
+id="location"
+placeholder="Location"
+required>
+
+<button type="submit">
+
+Post Job
+
+</button>
+
+<p id="msg"></p>
+
+</form>
+
+</div>
+
+<div class="footer">
+
+<p>
+
+© 2026 ATS Placement Portal |
+Developed by Vanshika
+
+</p>
+
+</div>
+
+<script>
+
+document.getElementById("jobForm")
+.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    let jobs =
+    JSON.parse(localStorage.getItem("jobs"))
+    || [];
+
+    let newJob = {
+
+        company:
+        document.getElementById("company").value,
+
+        role:
+        document.getElementById("role").value,
+
+        package:
+        document.getElementById("package").value,
+
+        location:
+        document.getElementById("location").value
+
+    };
+
+    jobs.push(newJob);
+
+    localStorage.setItem(
+        "jobs",
+        JSON.stringify(jobs)
+    );
+
+    document.getElementById("msg").innerText =
+    "Job Posted Successfully!";
+
+    document.getElementById("jobForm").reset();
+
+});
+
+</script>
+
+</body>
+
+</html>

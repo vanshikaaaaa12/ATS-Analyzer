@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Available Jobs</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f7fc;
+}
+
+.navbar{
+    background:#007BFF;
+    padding:15px 40px;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    font-size:18px;
+}
+
+.heading{
+    text-align:center;
+    margin-top:40px;
+}
+
+.heading h1{
+    color:#333;
+    font-size:42px;
+}
+
+.jobs-container{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:30px;
+    padding:40px;
+}
+
+.job-card{
+    width:320px;
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0px 5px 15px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.job-card:hover{
+    transform:translateY(-10px);
+}
+
+.job-card h2{
+    color:#007BFF;
+    margin-bottom:10px;
+}
+
+.job-card p{
+    color:gray;
+    margin:8px 0;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    margin-top:15px;
+    border:none;
+    border-radius:10px;
+    background:#28a745;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#1e7e34;
+}
+
+.company-btn{
+    background:#007BFF;
+}
+
+.company-btn:hover{
+    background:#0056b3;
+}
+
+.empty{
+    text-align:center;
+    font-size:24px;
+    color:gray;
+    margin-top:80px;
+}
+
+.footer{
+    text-align:center;
+    padding:20px;
+    background:#007BFF;
+    color:white;
+    margin-top:40px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="navbar">
+
+<div class="logo">
+
+ATS Portal
+
+</div>
+
+<div class="nav-links">
+
+<a href="student_dashboard.html">
+
+Home
+
+</a>
+
+<a href="profile.html">
+
+Profile
+
+</a>
+
+<a href="student_login.html">
+
+Logout
+
+</a>
+
+</div>
+
+</div>
+
+<div class="heading">
+
+<h1>
+
+Available Jobs
+
+</h1>
+
+</div>
+
+<div class="jobs-container"
+id="jobsContainer">
+
+</div>
+
+<div class="footer">
+
+<p>
+
+© 2026 ATS Placement Portal |
+Developed by Vanshika
+
+</p>
+
+</div>
+
+<script>
+
+let jobs =
+JSON.parse(localStorage.getItem("jobs"))
+|| [
+
+{
+    company:"TCS",
+    role:"Software Developer",
+    package:"7 LPA",
+    location:"Gurgaon",
+    link:"https://www.tcs.com/careers"
+},
+
+{
+    company:"Infosys",
+    role:"Java Developer",
+    package:"6 LPA",
+    location:"Noida",
+    link:"https://career.infosys.com"
+},
+
+{
+    company:"Wipro",
+    role:"Full Stack Developer",
+    package:"8 LPA",
+    location:"Bangalore",
+    link:"https://careers.wipro.com"
+}
+
+];
+
+let container =
+document.getElementById("jobsContainer");
+
+if(jobs.length === 0){
+
+    container.innerHTML = `
+
+    <div class="empty">
+
+    No Jobs Available
+
+    </div>
+
+    `;
+
+}
+
+else{
+
+    jobs.forEach(job => {
+
+        container.innerHTML += `
+
+        <div class="job-card">
+
+            <h2>
+            ${job.company}
+            </h2>
+
+            <p>
+            <b>Role:</b>
+            ${job.role}
+            </p>
+
+            <p>
+            <b>Package:</b>
+            ${job.package}
+            </p>
+
+            <p>
+            <b>Location:</b>
+            ${job.location}
+            </p>
+
+            <button onclick="applyJob(
+            '${job.company}',
+            '${job.role}',
+            '${job.package}',
+            '${job.location}'
+            )">
+
+            Apply Now
+
+            </button>
+
+            <a href="${job.link}"
+            target="_blank">
+
+            <button class="company-btn">
+
+            View Company
+
+            </button>
+
+            </a>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+function applyJob(company, role, packageName, location){
+
+    let applications =
+    JSON.parse(localStorage.getItem("applications"))
+    || [];
+
+    let studentName =
+    localStorage.getItem("studentName");
+
+    let studentEmail =
+    localStorage.getItem("studentEmail");
+
+    let newApplication = {
+
+        student: studentName,
+
+        studentEmail: studentEmail,
+
+        company: company,
+
+        role: role,
+
+        package: packageName,
+
+        location: location,
+
+        status: "Applied"
+
+    };
+
+    applications.push(newApplication);
+
+    localStorage.setItem(
+        "applications",
+        JSON.stringify(applications)
+    );
+
+    alert("Application Submitted Successfully!");
+
+}
+
+</script>
+
+</body>
+
+</html>

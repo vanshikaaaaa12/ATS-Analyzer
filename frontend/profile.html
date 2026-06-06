@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Student Profile</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f7fc;
+}
+
+.navbar{
+    background:#007BFF;
+    padding:15px 40px;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    font-size:18px;
+}
+
+.profile-container{
+    width:450px;
+    background:white;
+    margin:60px auto;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0px 5px 15px rgba(0,0,0,0.1);
+}
+
+.profile-container h2{
+    text-align:center;
+    margin-bottom:20px;
+    color:#007BFF;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    margin-top:15px;
+    border:none;
+    border-radius:10px;
+    background:#28a745;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1e7e34;
+}
+
+.footer{
+    text-align:center;
+    padding:20px;
+    background:#007BFF;
+    color:white;
+    margin-top:40px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="navbar">
+
+<div class="logo">ATS Portal</div>
+
+<div class="nav-links">
+
+<a href="student_dashboard.html">Home</a>
+
+<a href="jobs.html">Jobs</a>
+
+<a href="student_login.html">Logout</a>
+
+</div>
+
+</div>
+
+<div class="profile-container">
+
+<h2>Student Profile</h2>
+
+<input type="text" id="name" placeholder="Full Name">
+
+<input type="email" id="email" placeholder="Email">
+
+<input type="text" id="branch" placeholder="Branch">
+
+<input type="number" id="cgpa" placeholder="CGPA">
+
+<button onclick="updateProfile()">
+
+Update Profile
+
+</button>
+
+</div>
+
+<div class="footer">
+
+<p>
+© 2026 ATS Placement Portal | Developed by Vanshika
+</p>
+
+</div>
+
+<script>
+
+let loggedInEmail =
+localStorage.getItem("studentEmail");
+
+fetch("https://ats-portal-backend.onrender.com/students/all")
+
+.then(res => res.json())
+
+.then(data => {
+
+    data.forEach(student => {
+
+        if(student.email === loggedInEmail){
+
+            document.getElementById("name").value =
+            student.name;
+
+            document.getElementById("email").value =
+            student.email;
+
+            document.getElementById("branch").value =
+            student.branch;
+
+            document.getElementById("cgpa").value =
+            student.cgpa;
+
+        }
+
+    });
+
+});
+
+function updateProfile(){
+
+    alert("Profile Updated Successfully!");
+
+}
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ATS Resume Checker</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    background:linear-gradient(135deg,#0f172a,#1e293b,#334155);
+    padding:40px 0;
+}
+
+.container{
+    
+    width:700px;
+    background:rgba(255,255,255,0.12);
+    padding:45px;
+    border-radius:28px;
+    backdrop-filter:blur(18px);
+    text-align:center;
+    box-shadow:0px 10px 35px rgba(0,0,0,0.4);
+    margin-bottom:40px;
+    border:1px solid rgba(255,255,255,0.2);
+}
+
+h2{
+    color:white;
+    margin-bottom:30px;
+    font-size:34px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin-top:20px;
+    border-radius:10px;
+    border:none;
+    background:white;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    margin-top:25px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(135deg,#2563eb,#3b82f6);
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.03);
+    box-shadow:0px 5px 20px rgba(59,130,246,0.5);
+}
+
+#result{
+    
+    margin-top:30px;
+    color:white;
+    white-space:pre-line;
+    text-align:left;
+    line-height:1.9;
+    background:rgba(255,255,255,0.08);
+    padding:25px;
+    border-radius:20px;
+    border-left:5px solid #3b82f6;
+    font-size:15px;
+    box-shadow:0px 4px 20px rgba(0,0,0,0.2);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>ATS Resume Scanner</h2>
+
+<input type="file" id="resumeFile">
+
+<button onclick="uploadResume()">Scan Resume</button>
+
+<h3 id="loadingText"
+style="display:none; color:white; text-align:center; margin-top:20px;">
+
+Analyzing Resume... 0s
+
+</h3>
+
+<p id="result"></p>
+
+</div>
+
+<script>
+
+function uploadResume(){
+
+    document.getElementById("loadingText").style.display = "block";
+
+    let seconds = 0;
+
+    let timer = setInterval(function(){
+
+        seconds++;
+
+        document.getElementById("loadingText").innerText =
+        "Analyzing Resume... " + seconds + "s";
+
+    },1000);
+
+    let file = document.getElementById("resumeFile").files[0];
+
+    let formData = new FormData();
+
+    formData.append("file", file);
+
+    fetch("https://ats-portal-backend.onrender.com/uploadResume", {
+
+        method: "POST",
+        body: formData
+
+    })
+
+    .then(response => response.text())
+
+    .then(data => {
+
+        clearInterval(timer);
+
+        document.getElementById("loadingText").style.display = "none";
+
+        document.getElementById("result").innerText = data;
+
+        window.scrollTo({
+
+            top: 0,
+
+            behavior: "smooth"
+
+        });
+
+    })
+
+    .catch(error => {
+
+        clearInterval(timer);
+
+        document.getElementById("loadingText").style.display = "none";
+
+        document.getElementById("result").innerText =
+        "Error : Backend not connected";
+
+    });
+
+}
+
+</script>
+
+</body>
+
+</html>
